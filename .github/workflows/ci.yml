@@ -1,0 +1,108 @@
+name: Velum CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  ci:
+    name: Lint · Typecheck · Test · Build
+    runs-on: ubuntu-latest
+    env:
+      VELUM_DEPLOYMENT_ENV: test
+      NODE_ENV: test
+      MIDNIGHT_NETWORK: preprod
+      MIDNIGHT_RPC_URL: https://rpc.preprod.midnight.network
+      MIDNIGHT_INDEXER_URI: ''
+      CONTRACT_ADDRESS: ''
+      NEXT_PUBLIC_MIDNIGHT_NETWORK: preprod
+      NEXT_PUBLIC_MIDNIGHT_NETWORK_ID: preprod
+      NEXT_PUBLIC_API_URL: 'https://velum-preprod-api.up.railway.app'
+      NEXT_PUBLIC_INDEXER_URI: https://indexer.preprod.midnight.network/api/v4/graphql
+      NEXT_PUBLIC_VELUM_CONTRACT_ADDRESS: ''
+      NEXT_PUBLIC_MIDNIGHT_EXPLORER_URL: https://preprod.midnightexplorer.com
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Compact compiler
+        uses: midnightntwrk/setup-compact-action@836895c8fffbbea6bd986af2b17e8941ff29d1f1
+        with:
+          compact-version: '0.31.1'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Compile Compact contract and synchronize browser assets
+        run: pnpm compile
+
+      - name: Verify managed assets
+        run: pnpm verify:managed
+
+      - name: Lint Monorepo
+        run: pnpm lint
+
+      - name: Typecheck Monorepo
+        run: pnpm typecheck
+
+      - name: Build Shared
+        run: pnpm --filter @velum/shared run build
+
+      - name: Run Tests
+        run: pnpm test
+        env:
+          VELUM_DEPLOYMENT_ENV: test
+          NODE_ENV: test
+          MIDNIGHT_INDEXER_URI: ''
+
+      - name: Validate local Midnight compose definition
+        run: docker compose -f compose.yml config
+
+      - name: Build All Workspaces
+        run: pnpm build
+
+  # Creates a GitHub "Production" deployment so the environment shows as Active
+  mark-production:
+    name: Mark Production Deployment
+    needs: ci
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    permissions:
+      deployments: write
+      contents: read
+    steps:
+      - name: Create GitHub Deployment
+        uses: chrnorm/deployment-action@v2
+        id: deployment
+        with:
+          token: ${{ github.token }}
+          environment: production
+          initial-status: in_progress
+          auto-inactive: true
+          description: 'Velum DApp — Midnight Preprod on Vercel'
+          environment-url: 'https://velum-protocol.vercel.app'
+
+      - name: Mark Deployment Success
+        uses: chrnorm/deployment-status@v2
+        with:
+          token: ${{ github.token }}
+          state: success
+          deployment-id: ${{ steps.deployment.outputs.deployment_id }}
+          environment-url: 'https://velum-protocol.vercel.app'
+          description: 'Live on velum-protocol.vercel.app'
