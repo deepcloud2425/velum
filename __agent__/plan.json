@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "title": "Audit Velum against the Level 1–4 Midnight checklist",
+      "status": "done"
+    },
+    {
+      "title": "Fix actual contract/wallet integration and remove unsupported completion claims",
+      "status": "in-progress"
+    },
+    {
+      "title": "Add reproducible local-network tests, artifact tooling, and CI",
+      "status": "pending"
+    },
+    {
+      "title": "Validate builds and tests; document deployment evidence and remaining blockers",
+      "status": "pending"
+    }
+  ],
+  "updated_at": "2026-09-27T17:52:08.323Z",
+  "session_id": "01a0e372-c4c8-775f-81be-3ac1cff7fcce"
+}

@@ -1,0 +1,55 @@
+# Node modules & dependencies
+node_modules
+.pnpm-store
+
+# Build outputs
+dist
+**/dist
+build
+**/build
+.next
+**/.next
+out
+**/*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE & editors
+.idea
+.vscode/*
+!.vscode/extensions.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Midnight artifacts
+*.bzk
+*.zkir
+.midnight
+*git-creds*
+
+# Compact compiler output is required by the browser and CI.
+!contracts/velum/src/managed/
+!contracts/velum/src/managed/**
+!frontend/src/managed/
+!frontend/src/managed/**
+!frontend/public/managed/
+!frontend/public/managed/**
