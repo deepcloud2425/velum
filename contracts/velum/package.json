@@ -1,0 +1,53 @@
+{
+  "name": "@velum/contracts",
+  "version": "0.1.0",
+  "description": "Velum Compact smart contracts for Midnight Network — confidential settlements",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "scripts": {
+    "compact:compile": "compact compile src/velum.compact src/managed",
+    "compact:compile:wsl": "wsl compact compile src/velum.compact src/managed",
+    "build": "tsc",
+    "dev": "echo 'contracts ready'",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc && node --test dist/test/velum.test.js",
+    "test:watch": "node --test --watch src/",
+    "lint": "echo 'contracts lint ok'",
+    "deploy:preview": "node dist/deployment/deploy.js",
+    "deploy:preprod": "node dist/deployment/deploy.js",
+    "deploy:mainnet": "node dist/deployment/deploy.js",
+    "deploy:local": "node dist/deployment/deploy.js",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@midnight-ntwrk/compact-js": "2.5.1",
+    "@midnight-ntwrk/compact-runtime": "^0.19.0",
+    "@midnight-ntwrk/ledger-v8": "8.1.0",
+    "@midnight-ntwrk/midnight-js": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-http-client-proof-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-indexer-public-data-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-level-private-state-provider": "^4.1.1",
+    "@midnight-ntwrk/midnight-js-node-zk-config-provider": "^4.1.1",
+    "@midnight-ntwrk/wallet-sdk-address-format": "^3.1.2",
+    "@midnight-ntwrk/wallet-sdk-dust-wallet": "^4.1.0",
+    "@midnight-ntwrk/wallet-sdk-facade": "^4.0.1",
+    "@midnight-ntwrk/wallet-sdk-hd": "^3.0.2",
+    "@midnight-ntwrk/wallet-sdk-shielded": "^3.0.1",
+    "@midnight-ntwrk/wallet-sdk-unshielded-wallet": "^3.1.0",
+    "@velum/shared": "workspace:*",
+    "rxjs": "^7.8.2",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.0"
+  }
+}
