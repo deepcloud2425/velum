@@ -1,0 +1,111 @@
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
+import QRCode from 'qrcode';
+import { VelumLogoMark } from '../ui/VelumLogo';
+import { Button } from '../ui/Button';
+import { Copy, Check, Download, Share2 } from 'lucide-react';
+
+export interface QRCodeDisplayProps {
+  value: string;
+  size?: number;
+  label?: string;
+  showLogo?: boolean;
+}
+
+export function QRCodeDisplay({
+  value,
+  size = 200,
+  label,
+  showLogo = true,
+}: QRCodeDisplayProps) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [copied, setCopied] = useState(false);
+  const [shared, setShared] = useState(false);
+
+  useEffect(() => {
+    if (canvasRef.current && value) {
+      QRCode.toCanvas(
+        canvasRef.current,
+        value,
+        {
+          width: size,
+          margin: 1.5,
+          color: {
+            dark: '#000000',
+            light: '#FFFFFF',
+          },
+          errorCorrectionLevel: 'H',
+        },
+        (error) => {
+          if (error) console.error('QR generation error:', error);
+        }
+      );
+    }
+  }, [value, size]);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleShare = async () => {
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Velum Confidential Payment',
+          text: `Payment URI: ${value}`,
+          url: window.location.href,
+        });
+        setShared(true);
+        setTimeout(() => setShared(false), 2000);
+      } catch {
+        handleCopy();
+      }
+    } else {
+      handleCopy();
+    }
+  };
+
+  const handleDownload = () => {
+    if (canvasRef.current) {
+      const url = canvasRef.current.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `velum-payment-qr-${Date.now()}.png`;
+      a.click();
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center space-y-4">
+      <div className="relative p-3 bg-white rounded-xl border-2 border-zinc-200 shadow-md max-w-full">
+        <canvas ref={canvasRef} className="block max-w-full h-auto mx-auto" />
+        {showLogo && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="w-9 h-9 rounded-xl bg-black p-1 border-2 border-cyan-400 flex items-center justify-center shadow-lg">
+              <VelumLogoMark size={22} />
+            </div>
+          </div>
+        )}
+      </div>
+
+      {label && <p className="text-xs text-zinc-600 dark:text-zinc-400 text-center max-w-xs font-mono font-medium break-all">{label}</p>}
+
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 w-full max-w-xs">
+        <Button variant="primary" size="sm" onClick={handleCopy} className="w-full sm:w-auto text-xs font-bold">
+          {copied ? <Check className="w-3.5 h-3.5 mr-1" /> : <Copy className="w-3.5 h-3.5 mr-1" />}
+          {copied ? 'Copied' : 'Copy URI'}
+        </Button>
+        <Button variant="secondary" size="sm" onClick={handleShare} className="w-full sm:w-auto text-xs font-semibold">
+          {shared ? <Check className="w-3.5 h-3.5 mr-1 text-emerald-600" /> : <Share2 className="w-3.5 h-3.5 mr-1" />}
+          Share
+        </Button>
+        <Button variant="secondary" size="sm" onClick={handleDownload} className="w-full sm:w-auto text-xs font-semibold">
+          <Download className="w-3.5 h-3.5 mr-1" /> Download
+        </Button>
+      </div>
+    </div>
+  );
+}
