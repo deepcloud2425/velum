@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="vBrandGrad" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#06B6D4" />
+      <stop offset="50%" stopColor="#6366F1" />
+      <stop offset="100%" stopColor="#8B5CF6" />
+    </linearGradient>
+    <filter id="vBrandGlow" x="0" y="0" width="120" height="120" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+  </defs>
+
+  <circle cx="60" cy="60" r="40" fill="#06B6D4" opacity="0.2" filter="url(#vBrandGlow)" />
+  <polygon points="60,16 100,38 100,82 60,104 20,82 20,38" stroke="url(#vBrandGrad)" stroke-width="4" stroke-linejoin="round" fill="rgba(6, 182, 212, 0.06)" />
+  <path d="M60 36C68 44 76 52 76 62C76 70.8 68.8 78 60 78C51.2 78 44 70.8 44 62C44 52 52 44 60 36Z" stroke="url(#vBrandGrad)" stroke-width="3.5" />
+  <circle cx="60" cy="60" r="7" fill="#06B6D4" />
+  <circle cx="60" cy="60" r="3" fill="#FFFFFF" />
+</svg>

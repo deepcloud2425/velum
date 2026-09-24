@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500" fill="none">
+  <defs>
+    <radialGradient id="bannerBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stopColor="#0B132B" />
+      <stop offset="60%" stopColor="#06080F" />
+      <stop offset="100%" stopColor="#020408" />
+    </radialGradient>
+    <linearGradient id="glowG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stopColor="#06B6D4" />
+      <stop offset="50%" stopColor="#6366F1" />
+      <stop offset="100%" stopColor="#8B5CF6" />
+    </linearGradient>
+    <filter id="bigGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="60" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1500" height="500" fill="url(#bannerBg)" />
+
+  <!-- Ambient lights -->
+  <circle cx="280" cy="250" r="180" fill="#06B6D4" opacity="0.15" filter="url(#bigGlow)" />
+  <circle cx="1200" cy="250" r="220" fill="#6366F1" opacity="0.12" filter="url(#bigGlow)" />
+
+  <!-- Grid lines -->
+  <g opacity="0.12" stroke="#06B6D4" stroke-width="1">
+    <line x1="0" y1="100" x2="1500" y2="100" />
+    <line x1="0" y1="200" x2="1500" y2="200" />
+    <line x1="0" y1="300" x2="1500" y2="300" />
+    <line x1="0" y1="400" x2="1500" y2="400" />
+    <line x1="250" y1="0" x2="250" y2="500" />
+    <line x1="500" y1="0" x2="500" y2="500" />
+    <line x1="750" y1="0" x2="750" y2="500" />
+    <line x1="1000" y1="0" x2="1000" y2="500" />
+    <line x1="1250" y1="0" x2="1250" y2="500" />
+  </g>
+
+  <!-- Logo Mark -->
+  <g transform="translate(180, 160)">
+    <polygon points="90,10 160,50 160,130 90,170 20,130 20,50" stroke="url(#glowG)" stroke-width="4.5" stroke-linejoin="round" fill="rgba(6, 182, 212, 0.08)" />
+    <path d="M90 40C104 54 118 68 118 88C118 103 105 116 90 116C75 116 62 103 62 88C62 68 76 54 90 40Z" stroke="url(#glowG)" stroke-width="3.5" />
+    <circle cx="90" cy="88" r="8" fill="#06B6D4" />
+    <circle cx="90" cy="88" r="3.5" fill="#FFFFFF" />
+  </g>
+
+  <!-- Typography -->
+  <text x="390" y="240" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="74" font-weight="900" letter-spacing="8" fill="#FFFFFF">VELUM</text>
+  <rect x="710" y="180" width="80" height="38" rx="8" fill="rgba(6, 182, 212, 0.15)" stroke="#06B6D4" stroke-width="1.5" />
+  <text x="732" y="206" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="700" fill="#06B6D4">ZK</text>
+
+  <text x="395" y="295" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="24" font-weight="500" fill="#94A3B8">
+    Institutional Confidential Payments &amp; Settlement Protocol
+  </text>
+
+  <!-- Badges row -->
+  <g transform="translate(395, 335)">
+    <rect x="0" y="0" width="180" height="34" rx="17" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" />
+    <circle cx="16" cy="17" r="4" fill="#10B981" />
+    <text x="28" y="22" font-family="'JetBrains Mono', monospace" font-size="12" fill="#E2E8F0">Midnight Preprod</text>
+
+    <rect x="195" y="0" width="165" height="34" rx="17" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" />
+    <circle cx="211" cy="17" r="4" fill="#06B6D4" />
+    <text x="223" y="22" font-family="'JetBrains Mono', monospace" font-size="12" fill="#E2E8F0">Compact 0.31.1</text>
+
+    <rect x="375" y="0" width="165" height="34" rx="17" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.12)" />
+    <circle cx="391" cy="17" r="4" fill="#6366F1" />
+    <text x="403" y="22" font-family="'JetBrains Mono', monospace" font-size="12" fill="#E2E8F0">1AM DApp v4.x</text>
+  </g>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <defs>
+    <linearGradient id="vGrad" x1="5" y1="5" x2="55" y2="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stopColor="#06B6D4" />
+      <stop offset="50%" stopColor="#6366F1" />
+      <stop offset="100%" stopColor="#8B5CF6" />
+    </linearGradient>
+    <filter id="vGlow" x="0" y="0" width="60" height="60" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+  </defs>
+  
+  <!-- Glow -->
+  <circle cx="30" cy="30" r="18" fill="#06B6D4" opacity="0.25" filter="url(#vGlow)" />
+  
+  <!-- Shield Mark -->
+  <polygon points="30,8 50,19 50,41 30,52 10,41 10,19" stroke="url(#vGrad)" stroke-width="2.5" fill="rgba(6, 182, 212, 0.08)" />
+  <path d="M30 18C34 22 38 26 38 31C38 35.4 34.4 39 30 39C25.6 39 22 35.4 22 31C22 26 26 22 30 18Z" stroke="url(#vGrad)" stroke-width="2" />
+  <circle cx="30" cy="30" r="3" fill="#06B6D4" />
+  
+  <!-- Wordmark -->
+  <text x="70" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="26" font-weight="900" letter-spacing="3" fill="#06B6D4">VELUM</text>
+  <rect x="180" y="22" width="28" height="16" rx="4" fill="rgba(6, 182, 212, 0.15)" stroke="#06B6D4" stroke-width="1" />
+  <text x="186" y="34" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#06B6D4">ZK</text>
+</svg>
