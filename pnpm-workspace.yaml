@@ -1,0 +1,11 @@
+packages:
+  - 'shared'
+  - 'contracts/velum'
+  - 'backend'
+  - 'frontend'
+allowBuilds:
+  '@swc/core': false
+  classic-level: false
+  esbuild: true
+  msgpackr-extract: true
+  unrs-resolver: true

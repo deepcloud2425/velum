@@ -1,0 +1,46 @@
+{
+  "name": "velum-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Velum - Zero-Knowledge Confidential Payments & Settlements on Midnight Network",
+  "workspaces": [
+    "shared",
+    "contracts/velum",
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "build": "pnpm --filter @velum/shared run build && pnpm --filter @velum/contracts run build && pnpm --filter @velum/backend run build && pnpm --filter @velum/frontend run build",
+    "compile": "pnpm compile:compact && pnpm copy:managed && pnpm verify:managed",
+    "compile:compact": "node scripts/compile-compact.mjs",
+    "copy:managed": "node scripts/copy-managed.mjs",
+    "verify:managed": "node scripts/verify-managed.mjs",
+    "env:up": "docker compose -f compose.yml up -d --wait",
+    "env:down": "docker compose -f compose.yml down",
+    "env:status": "docker compose -f compose.yml ps",
+    "test:local": "pnpm test",
+    "test:preview": "pnpm test",
+    "test:preprod": "pnpm test",
+    "start": "pnpm --filter @velum/frontend run preview",
+    "start:frontend": "pnpm --filter @velum/frontend run preview",
+    "start:backend": "pnpm --filter @velum/backend run start",
+    "test": "pnpm --filter @velum/shared run test && pnpm --filter @velum/contracts run test && pnpm --filter @velum/backend run test",
+    "lint": "pnpm -r --if-present run lint",
+    "typecheck": "pnpm --filter @velum/shared run build && pnpm -r --if-present run typecheck",
+    "verify:preview-env": "node scripts/verify-preview-env.mjs",
+    "verify:preprod-env": "node scripts/verify-preprod-env.mjs",
+    "onboard:users": "node scripts/onboard-users.mjs",
+    "dev": "pnpm -r --parallel --if-present run dev",
+    "dev:backend": "pnpm --filter @velum/backend run dev",
+    "dev:frontend": "pnpm --filter @velum/frontend run dev",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md,compact}\"",
+    "clean": "pnpm -r --if-present run clean",
+    "readiness": "node scripts/verify-levels.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "prettier": "^3.5.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.0"
+  }
+}
