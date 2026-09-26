@@ -1,0 +1,26 @@
+{
+  "build": {
+    "command": "pnpm run build",
+    "publish": "frontend/dist",
+    "functions": "netlify/functions"
+  },
+  "redirects": [
+    {
+      "from": "/api/*",
+      "to": "/.netlify/functions/api/:splat",
+      "status": 200,
+      "force": true
+    },
+    {
+      "from": "/health",
+      "to": "/.netlify/functions/api/health",
+      "status": 200,
+      "force": true
+    },
+    {
+      "from": "/*",
+      "to": "/index.html",
+      "status": 200
+    }
+  ]
+}
