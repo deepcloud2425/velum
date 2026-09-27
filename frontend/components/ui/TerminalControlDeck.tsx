@@ -25,7 +25,7 @@ export function TerminalControlDeck() {
         '[VITE v8.3.1] ready in 280 ms',
         '➜ Local:   http://localhost:3000/',
         '➜ Network: http://192.168.1.10:3000/',
-        '➜ Proxy:   /api -> http://localhost:3001',
+        '➜ Proxy:   /api -> http://localhost:4000',
         '⚡ [Midnight] Preprod node connected (Block #248,192)',
       ],
     },
