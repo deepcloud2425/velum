@@ -160,6 +160,9 @@ importers:
       '@midnight-ntwrk/midnight-js-fetch-zk-config-provider':
         specifier: 4.1.1
         version: 4.1.1
+      '@midnight-ntwrk/midnight-js-indexer-public-data-provider':
+        specifier: 4.1.1
+        version: 4.1.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@midnight-ntwrk/midnight-js-network-id':
         specifier: 4.1.1
         version: 4.1.1
