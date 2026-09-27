@@ -7,7 +7,7 @@
   <p>
     <code>CI: Configured</code> •
     <code>Preprod: Operator Deploy</code> •
-    <code>X: @VelumProtocol</code> •
+    <code>X: @velumprotoudn9</code> •
     <code>Midnight: Preprod</code> •
     <code>Compact: 0.31.1 Artifacts</code> •
     <code>1AM Wallet: v4.x</code> •
@@ -67,7 +67,8 @@ Unlike public legacy blockchains where wallet balances, counterparty addresses, 
 | **GitHub Repo** | [https://github.com/deepcloud2425/velum.git](https://github.com/deepcloud2425/velum.git) |
 | **Live Contract** | `02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb` |
 | **Contract Explorer** | [View on 1AM Explorer](https://explorer.1am.xyz/contract/02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb?network=preprod) |
-| **X (Twitter)** | [@VelumProtocol](https://twitter.com/VelumProtocol) |
+| **X (Twitter) Profile** | [@velumprotoudn9](https://x.com/velumprotoudn9) |
+| **X (Twitter) Post** | [Announcement Post](https://x.com/velumprotoudn9/status/2104288355303514429) |
 | **Author** | Velum Protocol Core Contributors |
 
 ---
