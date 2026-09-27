@@ -58,6 +58,26 @@ Unlike public legacy blockchains where wallet balances, counterparty addresses, 
 
 ---
 
+## Application Screenshots
+
+<div align="center">
+  <img src="./assets/ss1.png" alt="App Screenshot 1" width="800" />
+  <br/>
+  <br/>
+  <img src="./assets/ss2.png" alt="App Screenshot 2" width="800" />
+  <br/>
+  <br/>
+  <img src="./assets/ss3.png" alt="App Screenshot 3" width="800" />
+  <br/>
+  <br/>
+  <img src="./assets/ss4.png" alt="App Screenshot 4" width="800" />
+  <br/>
+  <br/>
+  <img src="./assets/ss5.png" alt="App Screenshot 5" width="800" />
+</div>
+
+---
+
 ## Hackathon Level Requirements & Verification
 
 | Requirement Level | Criteria Description | Velum Implementation & Proof | Status |
@@ -178,7 +198,7 @@ In Compact, data cannot cross from the private witness into the public ledger un
 
 ## Midnight Preprod Deployment Gate
 
-Velum is configured for **Midnight Preprod**, but this repository does not invent or hard-code a contract address. Deployment must be performed from the Admin page with a funded 1AM wallet, then recorded in the protected environment variables and README.
+Velum is configured for **Midnight Preprod**. The contract below was deployed manually with a funded 1AM wallet; keep the same address in the protected environment variables used by the frontend and CI.
 
 | Network Parameter | Deployed Configuration | Verification Details |
 |:---|:---|:---|
@@ -353,7 +373,7 @@ The Velum repository maintains a granular, test-driven commit history demonstrat
 - **GitHub Repository**: https://github.com/deepcloud2425/velum.git
 - **Official X (Twitter) Profile**: @VelumProtocol
 - **Live Preprod Contract**: `02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb`
-- **Contract Explorer**: [View on 1AM Explorer](https://explorer.1am.xyz/contract/c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb?network=preprod)
+- **Contract Explorer**: [View on 1AM Explorer](https://explorer.1am.xyz/contract/02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb?network=preprod)
 - **Author**: Velum Protocol Core Contributors
 
 ---
