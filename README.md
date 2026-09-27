@@ -374,6 +374,7 @@ The Velum repository maintains a granular, test-driven commit history demonstrat
 - **Official X (Twitter) Profile**: @VelumProtocol
 - **Live Preprod Contract**: `02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb`
 - **Contract Explorer**: [View on 1AM Explorer](https://explorer.1am.xyz/contract/02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb?network=preprod)
+- **Demo Video**: [Watch on Google Drive](https://drive.google.com/file/d/1-gpneDd3EKWs86DESkGYoqTMZ-kqZ9ut/view?usp=sharing)
 - **Author**: Velum Protocol Core Contributors
 
 ---
