@@ -58,6 +58,20 @@ Unlike public legacy blockchains where wallet balances, counterparty addresses, 
 
 ---
 
+## Quick Links
+
+| Resource | Link / Information |
+|:---|:---|
+| **Live Demo** | [https://velum-mid.netlify.app/](https://velum-mid.netlify.app/) |
+| **Demo Video** | [Watch on Google Drive](https://drive.google.com/file/d/1-gpneDd3EKWs86DESkGYoqTMZ-kqZ9ut/view?usp=sharing) |
+| **GitHub Repo** | [https://github.com/deepcloud2425/velum.git](https://github.com/deepcloud2425/velum.git) |
+| **Live Contract** | `02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb` |
+| **Contract Explorer** | [View on 1AM Explorer](https://explorer.1am.xyz/contract/02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb?network=preprod) |
+| **X (Twitter)** | [@VelumProtocol](https://twitter.com/VelumProtocol) |
+| **Author** | Velum Protocol Core Contributors |
+
+---
+
 ## Application Screenshots
 
 <div align="center">
@@ -368,17 +382,7 @@ The Velum repository maintains a granular, test-driven commit history demonstrat
 
 ---
 
-## Official Socials & Links
 
-- **GitHub Repository**: https://github.com/deepcloud2425/velum.git
-- **Official X (Twitter) Profile**: @VelumProtocol
-- **Live Preprod Contract**: `02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb`
-- **Contract Explorer**: [View on 1AM Explorer](https://explorer.1am.xyz/contract/02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb?network=preprod)
-- **Live Demo**: [https://velum-mid.netlify.app/](https://velum-mid.netlify.app/)
-- **Demo Video**: [Watch on Google Drive](https://drive.google.com/file/d/1-gpneDd3EKWs86DESkGYoqTMZ-kqZ9ut/view?usp=sharing)
-- **Author**: Velum Protocol Core Contributors
-
----
 
 ## License
 
