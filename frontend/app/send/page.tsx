@@ -88,8 +88,10 @@ export default function SendPage() {
     setValidationError(null);
   };
 
-  const handleGoToReview = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleGoToReview = (event?: React.FormEvent | React.MouseEvent<HTMLButtonElement>) => {
+    event?.preventDefault();
+    event?.stopPropagation();
+    console.info('[Velum] Review settlement clicked');
     setValidationError(null);
 
     if (!recipientValidation.valid) {
@@ -313,23 +315,25 @@ export default function SendPage() {
               </div>
 
               {/* Validation Error Alert */}
-              {validationError && (
+              {(validationError || error) && (
                 <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm flex items-start gap-3 shadow-sm mt-4">
                   <AlertCircle className="w-5 h-5 shrink-0" />
-                  <span className="leading-relaxed">{validationError}</span>
+                  <span className="leading-relaxed">{validationError || error}</span>
                 </div>
               )}
 
               {/* Submit Button */}
               <div className="pt-4">
-                <Button
-                  type="submit"
-                  variant="default"
-                  size="lg"
-                  className="btn-3d w-full text-lg font-bold text-white h-16 rounded-2xl uppercase tracking-widest shadow-glow-magenta transition-all"
+                <button
+                  type="button"
+                  onPointerDown={(event) => event.stopPropagation()}
+                  onClick={handleGoToReview}
+                  aria-label="Synthesize proof and review settlement"
+                  className="btn-3d relative z-20 flex min-h-16 w-full cursor-pointer items-center justify-center gap-2 rounded-2xl px-6 text-lg font-bold uppercase tracking-widest text-white shadow-glow-magenta transition-all hover:brightness-110 active:translate-y-1"
                 >
-                  Synthesize Proof & Review Settlement <Sparkles className="w-5 h-5 ml-2 text-cyan-200 animate-pulse-glow" />
-                </Button>
+                  <span>Synthesize Proof &amp; Review Settlement</span>
+                  <Sparkles aria-hidden="true" className="h-5 w-5 text-cyan-200 animate-pulse-glow" />
+                </button>
               </div>
             </form>
           </div>

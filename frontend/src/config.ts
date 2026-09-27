@@ -26,7 +26,7 @@ export function getDeployedContractAddress(): string {
     return nextAddr.trim();
   }
 
-  return '';
+  return '02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb';
 }
 
 export function hasDeployedContractAddress(address = getDeployedContractAddress()): boolean {

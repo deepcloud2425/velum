@@ -1,5 +1,7 @@
 import { setNetworkId } from '@midnight-ntwrk/midnight-js-network-id';
 import { FetchZkConfigProvider } from '@midnight-ntwrk/midnight-js-fetch-zk-config-provider';
+import { indexerPublicDataProvider } from '@midnight-ntwrk/midnight-js-indexer-public-data-provider';
+import { ContractState } from '@midnight-ntwrk/compact-runtime';
 
 export function toHex(bytes: Uint8Array): string {
   if (!bytes) return '';
@@ -16,6 +18,29 @@ export function fromHex(hexString: string): Uint8Array {
 export function cleanHex(val: string | undefined | null): string {
   if (!val) return '';
   return val.startsWith('0x') ? val.slice(2) : val;
+}
+
+export function createPatchedPublicDataProvider(queryUrl: string, subscriptionUrl: string): any {
+  const base = indexerPublicDataProvider(queryUrl, subscriptionUrl) as any;
+  return {
+    ...base,
+    async queryContractState(contractAddress: string, config?: unknown) {
+      if (config) return base.queryContractState(contractAddress, config);
+      const response = await fetch(queryUrl, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          query: 'query ContractAction($address: HexEncoded!) { contractAction(address: $address) { state } }',
+          variables: { address: contractAddress },
+        }),
+      });
+      if (!response.ok) throw new Error(`Indexer HTTP ${response.status}`);
+      const payload = await response.json();
+      if (payload.errors?.length) throw new Error(payload.errors.map((error: any) => error.message).join('; '));
+      const serialized = payload.data?.contractAction?.state;
+      return serialized ? ContractState.deserialize(fromHex(serialized)) : null;
+    },
+  };
 }
 
 export function createPrivateStateProvider() {
@@ -152,8 +177,12 @@ export async function createConnectedSession(api: any): Promise<ConnectedSession
 
   const privateStateProvider = createPrivateStateProvider();
 
+  const indexerUrl = config?.indexerUri || config?.indexerUrl;
+  const indexerWsUrl = config?.indexerWsUri || config?.indexerWsUrl;
   let publicDataProvider: any = null;
-  if (typeof api.getPublicDataProvider === 'function') {
+  if (indexerUrl && indexerWsUrl) {
+    publicDataProvider = createPatchedPublicDataProvider(indexerUrl, indexerWsUrl);
+  } else if (typeof api.getPublicDataProvider === 'function') {
     try {
       publicDataProvider = await api.getPublicDataProvider();
     } catch (e) {

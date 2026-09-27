@@ -16,8 +16,9 @@ function requireEnv(key: string, fallback?: string): string {
 const env = process.env.NODE_ENV ?? 'development';
 const isProd = env === 'production';
 const deploymentEnvironment = process.env.VELUM_DEPLOYMENT_ENV ?? '';
-const midnightNetwork = process.env.MIDNIGHT_NETWORK ?? process.env.MIDNIGHT_NETWORK_ID ?? 'preview';
-export const DEFAULT_PREPROD_CONTRACT_ADDRESS = process.env.VELUM_CONTRACT_ADDRESS || '';
+const DEPLOYED_VELUM_PREPROD_CONTRACT = '02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb';
+const midnightNetwork = process.env.MIDNIGHT_NETWORK ?? process.env.MIDNIGHT_NETWORK_ID ?? 'preprod';
+export const DEFAULT_PREPROD_CONTRACT_ADDRESS = process.env.VELUM_CONTRACT_ADDRESS || DEPLOYED_VELUM_PREPROD_CONTRACT;
 const midnightRpcUrl = (process.env.MIDNIGHT_RPC_URL && process.env.MIDNIGHT_RPC_URL.trim()) || (process.env.MIDNIGHT_NODE_URI && process.env.MIDNIGHT_NODE_URI.trim()) || 'https://rpc.preprod.midnight.network';
 const contractAddress = (process.env.CONTRACT_ADDRESS && process.env.CONTRACT_ADDRESS.trim()) || (process.env.VELUM_CONTRACT_ADDRESS && process.env.VELUM_CONTRACT_ADDRESS.trim()) || DEFAULT_PREPROD_CONTRACT_ADDRESS;
 

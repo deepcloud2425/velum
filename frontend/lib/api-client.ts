@@ -20,7 +20,7 @@ import {
 const API_BASE =
   (typeof process !== 'undefined' ? process.env?.NEXT_PUBLIC_API_URL : undefined) ||
   (typeof import.meta !== 'undefined' ? (import.meta as any).env?.VITE_API_URL : undefined) ||
-  'http://localhost:3001';
+  'http://localhost:4000';
 
 interface ApiEnvelope<T> {
   success: boolean;

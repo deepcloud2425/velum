@@ -8,4 +8,5 @@ allowBuilds:
   classic-level: false
   esbuild: true
   msgpackr-extract: true
+  sharp: set this to true or false
   unrs-resolver: true

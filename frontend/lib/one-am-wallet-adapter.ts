@@ -30,7 +30,7 @@ export const AUTHORIZED_NETWORKS: readonly SupportedNetwork[] = ['preview', 'pre
 export const PREPROD_CONTRACT_ADDRESS =
   (typeof process !== 'undefined' ? process.env?.NEXT_PUBLIC_VELUM_CONTRACT_ADDRESS : undefined) ||
   (typeof import.meta !== 'undefined' ? (import.meta as any).env?.VITE_CONTRACT_ADDRESS : undefined) ||
-  '';
+  '02c4a02b42b949f56cd77a97104d3eb134f6cc00580fea5de04749d736970588fb';
 
 function assertNetworkAllowed(network: SupportedNetwork): void {
   if (!AUTHORIZED_NETWORKS.includes(network)) {
